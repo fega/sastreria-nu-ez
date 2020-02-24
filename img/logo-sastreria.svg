@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="239.569" height="260.727" viewBox="0 0 63.386 68.984">
+   <defs>
+      <filter id="prefix__a" color-interpolation-filters="sRGB">
+         <feFlood result="flood" flood-color="#000" flood-opacity=".498" />
+         <feComposite result="composite1" operator="in" in2="SourceGraphic" in="flood" />
+         <feGaussianBlur result="blur" stdDeviation=".6" in="composite1" />
+         <feOffset result="offset" dy="1" />
+         <feComposite result="composite2" in2="offset" in="SourceGraphic" />
+      </filter>
+   </defs>
+   <g transform="translate(5.282 5.748)" opacity=".997" filter="url(#prefix__a)">
+      <path fill="#6f1a2b" d="M0 0v50.187h.002l26.403 7.3 26.402-7.3h.015V0z" />
+      <path fill="#141414" d="M3.024 0v47.367h.002l23.38 6.34 23.379-6.34h.013V0z" />
+   </g>
+   <g fill="#fff" font-family="serif" font-weight="400">
+      <text stroke-width=".216" font-size="8.632" y="139.914" x="89.638" style="line-height:1.25;-inkscape-font-specification:serif" transform="translate(-73.44 -113.128)">
+         <tspan style="-inkscape-font-specification:serif" y="139.914" x="89.638">Sastrería</tspan>
+      </text>
+      <text stroke-width=".372" font-size="14.897" y="150.539" x="85.779" style="line-height:1.25;-inkscape-font-specification:serif" transform="translate(-73.44 -113.128)">
+         <tspan style="-inkscape-font-specification:serif" y="150.539" x="85.779">Nuñez</tspan>
+      </text>
+      <text stroke-width=".106" font-size="4.25" y="154.474" x="87.811" style="line-height:1.25;-inkscape-font-specification:serif" transform="translate(-73.44 -113.128)">
+         <tspan style="-inkscape-font-specification:serif" y="154.474" x="87.811">41 años de tradicion</tspan>
+      </text>
+   </g>
+</svg>
