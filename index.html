@@ -10,11 +10,25 @@
   <style>
     body {
       margin: 0;
-
+      background-color: #141414;
     }
 
     body * {
       font-family: 'Crimson Text';
+      color: white;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px 0px;
+      text-align: center;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   </style>
 </head>
@@ -22,58 +36,53 @@
 <body>
   <top-bar></top-bar>
   <slider-section></slider-section>
-  <style>
-    .contact-button {
-      position: fixed;
-      max-width: 100vw;
-      width: 100vw;
-      height: 64px;
-      background-color: aqua;
-      padding: 0px;
-      padding-right: 30px;
-      display: flex;
-      justify-content: center;
-
-      align-items: center;
-      background-color: #141414;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      border-top: 8px solid #6f1a2b;
-      z-index: 2000;
-      bottom: 0px;
-
-    }
-
-    .contact-button a {
-      color: white;
-      font-size: 1.6em;
-      text-decoration: none;
-    }
-
-    .contact-button img {
-      width: 28px;
-      padding-right: 15px;
-    }
-  </style>
-  <div class="contact-button">
-    <img src="img/llamada.svg" alt="Icono de llamada">
-    <a href="tel:+573164670342">316 467 0342</a>
-  </div>
-
-
   <contact-button></contact-button>
-  <h2>Servicios</h2>
-  <service-section></service-section>
-  <service-section></service-section>
-  <service-section></service-section>
-  <service-section></service-section>
-  <service-section></service-section>
+  <div class="container">
+    <h2>Servicios</h2>
+    <div class="services-container">
 
-  <slider-section></slider-section>
-  <slider-section></slider-section>
-  <slider-section></slider-section>
+      <!-- <div class="section-container">
+        <div class="patron"></div>
+        <img src="/img/services/dotaciones.jpg" alt="" srcset="">
+        <p class="texto"></p>
+      </div>
+
+      <div class="section-container">
+        <div class="patron"></div>
+        <img src="/img/services/alta-costura.jpg" alt="" srcset="">
+        <p class="texto">Servicios generales</p>
+      </div>
+
+      <div class="section-container">
+        <div class="patron"></div>
+        <img src="/img/services/sastreria.jpg" alt="" srcset="">
+        <p class="texto">Sastrería</p>
+      </div> -->
+      <service-section src="/img/services/alquiler.jpg" text="Alquiler de ropa"></service-section>
+      <service-section src="/img/services/dotaciones.jpg" text="Dotaciones para empresa"></service-section>
+      <service-section src="/img/services/alta-costura.jpg" text="Servicios generales"></service-section>
+      <service-section src="/img/services/sastreria.jpg" text="Sastrería"></service-section>
+    </div>
+  </div>
+  <div class="container">
+    <h2>Cualidades de nuestro servicio</h2>
+  </div>
+  <service-feature></service-feature>
+  <service-feature></service-feature>
+  <service-feature></service-feature>
+  <div class="container">
+    <h2>Testimonios</h2>
+  </div>
+  <service-review></service-review>
+  <service-review></service-review>
+  <div class="container">
+    <h2>Donde estamos?</h2>
+  </div>
+  <location-widget></location-widget>
+
   <footer>
     Iconos diseñados por <a href="https://www.flaticon.es/autores/smashicons" title="Smashicons">Smashicons</a> from <a
-      href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
+      href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</div>
   </footer>
 </body>
 

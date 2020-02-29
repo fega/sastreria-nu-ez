@@ -71,28 +71,37 @@ class SliderSection extends HTMLElement {
     .slider {
       max-height: 500px;
       position: relative;
+      display:flex;
+      justify-content: center;
     }
 
     .slider .patron {
-      background-image: url('pattern.png');
+      background-image: url('img/pattern.png');
       height: 100%;
       width: 100%;
       position: absolute;
       z-index: 400;
     }
-
-    .slider .texto {
+    .slider .text-container{
       height: 100%;
       position: absolute;
-      width: 100%;
+      width: 70%;
       z-index: 401;
-      color: white;
-      font-size: 3.5em;
+      margin:auto;
+
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+    .slider .texto, .slider .texto-2 {
+      color: white;
+      font-size: 3.5em;
       margin: 0px;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.50);
+    }
+    .slider .texto-2{
+      font-size: 2em;
 
     }
 
@@ -104,8 +113,11 @@ class SliderSection extends HTMLElement {
   </style>
   <div class="slider">
     <div class="patron"></div>
-    <p class="texto">41 Años de tradición</p>
-    <img src="img/prueba-2.jpg" alt="matrimonio-elegante">
+    <div class="text-container">
+      <p class="texto">41 Años de tradición</p>
+      <p class="texto-2">Desde 1979 ofrecemos productos y servicios de alta costura, clínica de ropa, dotaciones, alquiler, sastrería y demás.</p>
+    </div>
+    <img src="img/prueba.jpg" alt="matrimonio-elegante">
   </div>`;
   }
 }
@@ -120,15 +132,146 @@ class ContactButton extends HTMLElement {
 
   static createTemplate() {
     this.topBarTemplate = document.createElement('template');
-    this.topBarTemplate.innerHTML = ``;
+    this.topBarTemplate.innerHTML = `
+    <style>
+    .contact-button {
+      position: fixed;
+      max-width: 100vw;
+      width: 100vw;
+      height: 64px;
+      padding: 0px;
+      padding-right: 30px;
+      display: flex;
+      justify-content: center;
+
+      align-items: center;
+      background-color: #141414;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      border-top: 8px solid #6f1a2b;
+      z-index: 2000;
+      bottom: 0px;
+
+    }
+
+    .contact-button a {
+      color: white;
+      font-size: 1.6em;
+      text-decoration: none;
+    }
+
+    .contact-button img {
+      width: 28px;
+      padding-right: 15px;
+    }
+    </style>
+
+    <section class="contact-button">
+      <img src="img/llamada.svg" alt="Icono de llamada">
+      <a href="tel:+573164670342">316 467 0342</a>
+    </section>
+    `;
   }
 }
+
+class ServiceSection extends HTMLElement {
+  constructor() {
+    super()
+    this.shadow = this.attachShadow({ mode: 'closed' });
+    this.shadow.appendChild(ServiceSection.topBarTemplate.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.updateStyle()
+  }
+
+  updateStyle() {
+    const src = this.getAttribute('src');
+    const text = this.getAttribute('text');
+
+    const imgElement = this.shadow.getElementById('service-image');
+    const textElement = this.shadow.getElementById('service-text');
+
+
+
+    imgElement.setAttribute('src', src);
+    textElement.innerHTML = text;
+
+  }
+
+  static createTemplate() {
+    this.topBarTemplate = document.createElement('template');
+    this.topBarTemplate.innerHTML = `
+    <style>
+        .section-container {
+          display: flex;
+          position: relative;
+          margin: 5px;
+          border-radius: 2px;
+          width: 230px;
+          height: 230px;
+          transition: all 0.3s;
+        }
+
+        .section-container:hover {
+          transform: scale(1.05, 1.05);
+        }
+
+        .section-container .texto {
+          width: 100%;
+          position: absolute;
+          align-self: flex-end;
+          z-index: 401;
+          color: white;
+          font-size: 1.5em;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          margin: 0px;
+          background-color: rgba(0, 0, 0, 0.40);
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.50);
+
+        }
+
+        .section-container .patron {
+          background-image: url('img/pattern.png');
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          z-index: 400;
+          cursor: pointer;
+          transition: all 0.3s;
+        }
+
+        .section-container .patron:hover {
+          background-color: #6f1a2b6c;
+        }
+
+        .section-container img {
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+
+        }
+      </style>
+      <div class="section-container">
+        <div class="patron"></div>
+        <img id="service-image" src="/img/services/alquiler.jpg" alt="" srcset="">
+        <p id="service-text" class="texto">Alquiler de ropa</p>
+      </div>
+    `;
+  }
+
+}
+
+
 
 
 TopBar.createTemplate();
 SliderSection.createTemplate();
 ContactButton.createTemplate();
-
+ServiceSection.createTemplate();
 customElements.define('top-bar', TopBar);
 customElements.define('slider-section', SliderSection);
 customElements.define('contact-button', ContactButton);
+customElements.define('service-section', ServiceSection);
