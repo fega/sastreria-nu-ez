@@ -56,7 +56,6 @@ class TopBar extends HTMLElement {
     `;
   }
 }
-
 class SliderSection extends HTMLElement {
   constructor() {
     super()
@@ -121,8 +120,6 @@ class SliderSection extends HTMLElement {
   </div>`;
   }
 }
-
-
 class ContactButton extends HTMLElement {
   constructor() {
     super()
@@ -172,7 +169,6 @@ class ContactButton extends HTMLElement {
     `;
   }
 }
-
 class ServiceSection extends HTMLElement {
   constructor() {
     super()
@@ -264,14 +260,71 @@ class ServiceSection extends HTMLElement {
 
 }
 
+class ServiceFeature extends HTMLElement {
+  constructor() {
+    super()
+    this.shadow = this.attachShadow({ mode: 'closed' });
+    this.shadow.appendChild(ServiceFeature.topBarTemplate.content.cloneNode(true));
+  }
 
+  connectedCallback() {
+    this.updateStyle()
+  }
+
+  updateStyle() {
+    const src = this.getAttribute('src');
+    const text = this.getAttribute('text');
+    const title = this.getAttribute('title');
+
+    const imgElement = this.shadow.getElementById('service-feature-image');
+    const textElement = this.shadow.getElementById('service-feature-text');
+    const titleElement = this.shadow.getElementById('service-feature-title')
+
+    imgElement.setAttribute('src', src);
+    textElement.innerHTML = text;
+    titleElement.innerHTML = title;
+
+  }
+
+  static createTemplate() {
+    this.topBarTemplate = document.createElement('template');
+
+    this.topBarTemplate.innerHTML = /*html*/`
+    <style>
+      .service-feature-container{
+        width: 320px;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center
+      }
+      #service-feature-image{
+        width: 150px;
+        padding: 20px;
+      }
+      h3{
+        font-size: 1.5em;
+      }
+    </style>
+      <div class="service-feature-container">
+        <h3 id="service-feature-title">
+          Tradición
+        </h3>
+        <img id="service-feature-image" src="/img/features/tradicion.png">
+        <p id="service-feature-text">Tenemos mas de 41 años de experiencia trayendo, calidad y estilo a la ciudad de Bucaramanga</p>
+      </div>
+    `;
+  }
+}
 
 
 TopBar.createTemplate();
 SliderSection.createTemplate();
 ContactButton.createTemplate();
 ServiceSection.createTemplate();
+ServiceFeature.createTemplate();
 customElements.define('top-bar', TopBar);
 customElements.define('slider-section', SliderSection);
 customElements.define('contact-button', ContactButton);
 customElements.define('service-section', ServiceSection);
+customElements.define('service-feature', ServiceFeature);
