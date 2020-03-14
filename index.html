@@ -18,10 +18,17 @@
       color: white;
     }
 
+    footer{
+      margin-bottom: 100px;
+      border-top: 1px rgba(255, 255, 255, 0.5) solid;
+      padding-top: 20px;
+      margin-top: 15px;
+    }
+
     .container {
       max-width: 960px;
       margin: auto;
-      padding: 20px 0px;
+      padding: 0px 0px;
       text-align: center;
     }
 
@@ -29,6 +36,23 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+    }
+
+    .service-address{
+      text-align: center;
+      margin: 20px 0px;
+      margin-top: 0px;
+      font-size: 1.4em;
+      padding: 5px;
+      border-bottom: 1px rgba(255, 255, 255, 0.5) dashed;
+      border-top: 1px rgba(255, 255, 255, 0.5) dashed;
+    }
+    .contact-subtitle{
+      color: rgba(255, 255, 255, 0.5); 
+    }
+    h2 {
+      margin: 10px;
+      margin-top: 40px
     }
   </style>
 </head>
@@ -38,7 +62,7 @@
   <slider-section></slider-section>
   <contact-button></contact-button>
   <div class="container">
-    <h2>Servicios</h2>
+    <h2 id="servicios-title">Servicios</h2>
     <div class="services-container">
       <service-section src="/img/services/alquiler.jpg" text="Alquiler de ropa"></service-section>
       <service-section src="/img/services/dotaciones.jpg" text="Dotaciones para empresa"></service-section>
@@ -63,17 +87,42 @@
   <div class="container">
     <h2>Testimonios</h2>
   </div>
-  <service-review></service-review>
-  <service-review></service-review>
-  <div class="container">
-    <h2>Donde estamos?</h2>
+  <div class="services-container">
+    <service-review name="Fabian Nómada" src="/img/fabian.jpg" text="En la sastreria Nuñez, me atendieron como en casa, y las diferentes prendas de vestir que pedí confeccionar, fueron hechas y ajustadas a la perfeccion.
+      Ahora, confeccionar mis prendas de vestir, se ha vuelto un habito y una diversion."></service-review>
+      <service-review name="Fabian Nómada" src="/img/fabian.jpg" text="En la sastreria Nuñez, me atendieron como en casa, y las diferentes prendas de vestir que pedí confeccionar, fueron hechas y ajustadas a la perfeccion.
+      Ahora, confeccionar mis prendas de vestir, se ha vuelto un habito y una diversion."></service-review> 
   </div>
-  <location-widget></location-widget>
+  <div class="container">
+    <h2>¿Como contactarnos?</h2>
+  </div>
+  <div class="services-container container">
+    <div class="service-address" style="width: 100% ">
+      <address class=""><span class="contact-subtitle">Dirección:</span> Cl. 33 ## 22-29, Bucaramanga, Santander</address>
+      <p ><span class="contact-subtitle">Celular:</span> 316 467 0342</p>
+      <p ><span class="contact-subtitle">Teléfono:</span> (7) 634 1209</p>
 
+    </div>
+    <div>
+      <a href="https://www.google.com/maps/place/Sastrer%C3%ADa+N%C3%BA%C3%B1ez/@7.1227024,-73.1217328,18.72z/data=!4m5!3m4!1s0x8e681562eb6ba821:0xd6aa5d4726b58548!8m2!3d7.1225134!4d-73.1213339">
+        <img class="mapa" src="/img/location.png" alt="Localización de la sastrería Núñez, Cl. 33 ## 22-29, Bucaramanga, Santander">  
+      </a>
+    </div>
+    </div>
   <footer>
-    Iconos diseñados por <a href="https://www.flaticon.es/autores/smashicons" title="Smashicons">Smashicons</a> from <a
-      href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</div>
-  </footer>
+    <div class="container">
+      <p>
+        Iconos diseñados por <a href="https://www.flaticon.es/autores/smashicons" title="Smashicons">Smashicons</a> from <a
+      href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es
+      </p>
+      
+      
+      <p>
+        Página web diseñada por Fabián Nómada
+      </p> 
+    </div>
+
+  </footer>   
 </body>
 
 </html>

@@ -9,7 +9,7 @@ class TopBar extends HTMLElement {
 
   static createTemplate() {
     this.topBarTemplate = document.createElement('template');
-    this.topBarTemplate.innerHTML = `
+    this.topBarTemplate.innerHTML = /*html*/`
     <style>
     .navbar {
       max-width: 100vw;
@@ -48,7 +48,7 @@ class TopBar extends HTMLElement {
 
     <div class="navbar">
       <a href="/">Inicio</a>
-      <a href="/">Servicios</a>
+      <a href="/#servicios-title">Servicios</a>
       <a href="/">Galería</a>
       <a href="/">Contacto</a>
     </div>
@@ -259,7 +259,6 @@ class ServiceSection extends HTMLElement {
   }
 
 }
-
 class ServiceFeature extends HTMLElement {
   constructor() {
     super()
@@ -304,6 +303,7 @@ class ServiceFeature extends HTMLElement {
       }
       h3{
         font-size: 1.5em;
+        margin-top: 0px;
       }
     </style>
       <div class="service-feature-container">
@@ -317,14 +317,109 @@ class ServiceFeature extends HTMLElement {
   }
 }
 
+class ServiceReview extends HTMLElement {
+  constructor() {
+    super()
+    this.shadow = this.attachShadow({ mode: 'closed' });
+    this.shadow.appendChild(ServiceReview.topBarTemplate.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.updateStyle()
+  }
+
+  updateStyle() {
+    const src = this.getAttribute('src');
+    const text = this.getAttribute('text');
+    const name = this.getAttribute('name');
+
+    const imgElement = this.shadow.getElementById('service-review-photo');
+    const textElement = this.shadow.getElementById('service-review-text');
+    const nameElement = this.shadow.getElementById('service-review-name');
+
+    imgElement.setAttribute('src', src);
+    textElement.innerHTML = text;
+    nameElement.innerHTML = name;
+  }
+  static createTemplate() {
+    this.topBarTemplate = document.createElement('template');
+
+    this.topBarTemplate.innerHTML = /*html*/`
+    <style>
+      .service-review{
+        max-width: 400px;
+        width: 400px;
+        background: rgba(255,255,255, 0.1);
+        padding: 30px;
+        border-radius: 2px;
+        border: 1px double rgba(255, 255, 255, 0.5);
+        border-style: dashed;
+        margin: 10px;
+      }
+      .star{
+        max-width: 15px;
+        margin: 2px;
+      }
+
+      .title-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #service-review-text{
+        text-align: justify;
+      }
+
+      #service-review-photo{
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+      }
+
+      h4{
+        font-size: 1.5em;
+        margin: 0;
+        margin-left: 10px
+      }
+      .name-container{
+        display: flex;
+        align-items: center;
+      }
+    </style>
+      <div class="service-review">
+        <div class="title-container">
+          <div class="name-container">
+            <img id="service-review-photo" src="/img/fabian.jpg">
+            <h4 id="service-review-name">
+              
+            </h4>
+          </div>
+          <div>
+            <img src="/img/icons/star.svg" class="star">
+            <img src="/img/icons/star.svg" class="star">
+            <img src="/img/icons/star.svg" class="star">
+            <img src="/img/icons/star.svg" class="star">
+            <img src="/img/icons/star.svg" class="star">
+          </div>
+        </div>
+        <p id="service-review-text">
+          
+        </p>
+      </div>
+    `;
+  }
+}
 
 TopBar.createTemplate();
 SliderSection.createTemplate();
 ContactButton.createTemplate();
 ServiceSection.createTemplate();
 ServiceFeature.createTemplate();
+ServiceReview.createTemplate();
 customElements.define('top-bar', TopBar);
 customElements.define('slider-section', SliderSection);
 customElements.define('contact-button', ContactButton);
 customElements.define('service-section', ServiceSection);
 customElements.define('service-feature', ServiceFeature);
+customElements.define('service-review', ServiceReview);
